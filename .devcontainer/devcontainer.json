@@ -2,7 +2,7 @@
 	"name": "thesis",
 	"build": {
 		"dockerfile": "Containerfile.debian.texlive_base",
-		"args": { "VARIANT": "thesis_base" }
+		"args": { "VARIANT": "latest" }
 	},
 
 	// Set *default* container specific settings.json values on container create.
