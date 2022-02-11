@@ -1,5 +1,5 @@
 {
-	"name": "thesis",
+	"name": "thesis-dev",
 	"build": {
 		"dockerfile": "Containerfile.debian.texlive_base",
 		"args": { "VARIANT": "latest" }
@@ -29,6 +29,6 @@
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
 	"workspaceFolder": "/workspace",
 
-	"runArgs": ["--userns=keep-id", "--name=thesis_base"],
+	"runArgs": ["--userns=keep-id", "--name=thesis-dev"],
 	"containerUser": "vscode"
 }
