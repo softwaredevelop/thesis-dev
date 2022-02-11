@@ -1,5 +1,5 @@
-ARG VARIANT=thesis_base
-FROM localhost/texlive:$VARIANT
+ARG VARIANT=latest
+FROM docker.io/softwaredevelop/latex:$VARIANT
 
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
