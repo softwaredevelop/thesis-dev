@@ -11,6 +11,7 @@ jobs:
   run-lint:
     name: Hadolint Action
     runs-on: ubuntu-latest
+    environment: hadolint
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,4 +19,4 @@ jobs:
       - name: Hadolint
         uses: hadolint/hadolint-action@v1.6.0
         with:
-          dockerfile: .devcontainer/Containerfile.*
+          dockerfile: .devcontainer/Containerfile.${{ secrets.VARIANT }}
