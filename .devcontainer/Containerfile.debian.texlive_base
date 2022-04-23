@@ -1,27 +1,30 @@
 ARG VARIANT=latest
 FROM docker.io/softwaredevelop/latex:$VARIANT
 
-RUN apt-get update \
-    && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install --no-install-recommends --assume-yes \
+RUN \
+    apt-get update; \
+    export DEBIAN_FRONTEND=noninteractive; \
+    apt-get install --no-install-recommends --assume-yes \
     sudo \
-    locales \
-    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
-    && locale-gen \
-    && apt-get clean && rm -fr /var/lib/apt/lists/*
+    locales; \
+    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen; \
+    locale-gen; \
+    apt-get clean && rm -fr /var/lib/apt/lists/*
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --gid $USER_GID \
+RUN \
+    groupadd --gid $USER_GID $USERNAME; \
+    useradd --gid $USER_GID \
     --create-home $USERNAME \
     --shell /bin/bash \
-    --uid $USER_UID \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
+    --uid $USER_UID; \
+    echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME; \
+    chmod 0440 /etc/sudoers.d/$USERNAME
 
 COPY scripts-library/base_utils1.sh /tmp/scripts-library/
-RUN /bin/bash /tmp/scripts-library/base_utils1.sh \
-    && apt-get clean -y && rm -fr /var/lib/apt/lists/* /tmp/scripts-library
+RUN \
+    /bin/bash /tmp/scripts-library/base_utils1.sh; \
+    apt-get clean -y && rm -fr /var/lib/apt/lists/* /tmp/scripts-library
