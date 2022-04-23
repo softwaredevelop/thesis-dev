@@ -2,7 +2,11 @@
 	"name": "thesis-dev",
 	"build": {
 		"dockerfile": "Containerfile.debian.texlive_base",
-		"args": { "VARIANT": "latest" }
+		"args": {
+			"USER_UID": "1000",
+			"USERNAME": "vscode",
+			"VARIANT": "latest"
+		}
 	},
 
 	// Set *default* container specific settings.json values on container create.
