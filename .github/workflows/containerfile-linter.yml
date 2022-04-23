@@ -31,7 +31,6 @@ jobs:
   run-lint:
     name: Hadolint Action
     runs-on: ubuntu-latest
-    environment: hadolint
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
